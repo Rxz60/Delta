@@ -7,10 +7,10 @@
     <style>
         :root {
             --bg-dark: #000000;
-            --gold-royal: #d4af37;
-            --gold-glow: rgba(212, 175, 55, 0.4);
-            --card-bg: rgba(5, 5, 5, 0.88);
-            --border-royal: rgba(212, 175, 55, 0.35);
+            --royal-black: #0d0d0d;
+            --royal-glow: rgba(255, 255, 255, 0.15);
+            --card-bg: rgba(5, 5, 5, 0.92);
+            --border-royal: rgba(255, 255, 255, 0.12);
             --text-color: #ffffff;
         }
 
@@ -26,15 +26,15 @@
             color: var(--text-color); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden;
         }
 
-        /* صورة الساعة تدور بسرعة أكبر وأمام الخلفية */
+        /* صورة الساعة تدور بسرعة فائقة وموضعها أمام الخلفية وفوقها مباشرة */
         .rotating-clock-overlay {
             position: fixed; top: 50%; left: 50%; width: 85vw; height: 85vw;
             max-width: 850px; max-height: 850px;
             background-image: url('https://raw.githubusercontent.com/Rxz60/Delta/refs/heads/main/6700FF4D-7B89-4791-924C-76EEC0B76EBD.png');
             background-size: contain; background-position: center; background-repeat: no-repeat;
-            z-index: 2; opacity: 0.75; pointer-events: none;
+            z-index: 2; opacity: 0.8; pointer-events: none;
             transform: translate(-50%, -50%) rotate(0deg);
-            animation: clockRotate 15s linear infinite; /* تم تسريع الدوران هنا */
+            animation: clockRotate 8s linear infinite; /* تم تسريع الدوران ليكون سريعاً وحركياً */
         }
 
         @keyframes clockRotate {
@@ -42,41 +42,43 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* غلاف المحتوى الرئيسي */
+        /* غلاف المحتوى الرئيسي فوق الساعة */
         .main-content-wrapper {
             position: relative; z-index: 10;
         }
 
-        /* شاشة الفيديو الترحيبية التلقائية */
+        /* شاشة الفيديو الترحيبية السوداء الفخمة بجودة كاملة */
         #video-loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000000; z-index: 100000; display: flex; justify-content: center; align-items: center;
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
-        #intro-video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+        #intro-video { width: 100%; height: 100%; object-fit: cover; }
 
         header { padding: 60px 20px 20px; text-align: center; }
         
+        /* شعار البرق باللون الأسود والأبيض اللامع بحواف دائرية */
         .logo-img { 
             width: 140px; height: 140px; border-radius: 50%; 
-            border: 2px solid var(--gold-royal); 
-            box-shadow: 0 0 35px var(--gold-glow); 
+            border: 2px solid #ffffff; 
+            box-shadow: 0 0 30px var(--royal-glow); 
             margin-bottom: 15px; transition: 0.5s ease;
+            background: #000;
         }
-        .logo-img:hover { transform: scale(1.05); box-shadow: 0 0 45px var(--gold-royal); }
-        header h1 { font-size: 40px; margin: 0; font-weight: 900; letter-spacing: 4px; color: #ffffff; text-shadow: 0 0 15px var(--gold-glow); }
+        .logo-img:hover { transform: scale(1.05); box-shadow: 0 0 45px rgba(255,255,255,0.4); }
+        header h1 { font-size: 40px; margin: 0; font-weight: 900; letter-spacing: 4px; color: #ffffff; text-shadow: 0 0 15px rgba(255,255,255,0.3); }
 
         .tab-nav { display: flex; justify-content: center; gap: 15px; padding: 10px; max-width: 600px; margin: 0 auto 40px; }
         
-        /* أزرار التبويبات بتأثير متدرج من الذهبي للأسود عند التفعيل */
+        /* أزرار التبويبات باللون الأسود الملكي بالكامل وحواف دائرية */
         .tab-btn {
-            background: rgba(0, 0, 0, 0.85); border: 1px solid var(--border-royal); color: #aaaaaa;
+            background: rgba(0, 0, 0, 0.9); border: 1px solid var(--border-royal); color: #888888;
             padding: 14px 40px; border-radius: 30px; cursor: pointer; font-weight: 900; font-size: 15px;
             letter-spacing: 1px; transition: 0.4s ease;
         }
         .tab-btn.active { 
-            background: linear-gradient(135deg, var(--gold-royal), #000000); 
-            color: #ffffff; border-color: var(--gold-royal); box-shadow: 0 0 25px var(--gold-glow);
+            background: linear-gradient(135deg, #222222, #000000); 
+            color: #ffffff; border-color: #ffffff; box-shadow: 0 0 25px rgba(255,255,255,0.2);
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; }
@@ -85,7 +87,7 @@
 
         @keyframes royalFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* الكروت الملكية بتأثير تدرج حواف ولمعان ذهبي لأسود */
+        /* الكروت الملكية السوداء وحواف دائرية كاملة مع الستروك اللامع */
         .hack-card {
             background: var(--card-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-royal); border-radius: 24px; padding: 30px;
@@ -94,29 +96,29 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.9); position: relative; overflow: hidden;
         }
         
-        /* ستروك اللمعان المتدرج من الذهبي الماشي إلى الأسود */
+        /* تأثير ستروك اللمعان المتحرك باللون الأسود والأبيض الفخم */
         .hack-card::before, .dl-link::before {
             content: ''; position: absolute; top: 0; left: -150%; width: 60%; height: 100%;
-            background: linear-gradient(90deg, transparent, var(--gold-royal), #000000, transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), #000000, transparent);
             transform: skewX(-25deg); animation: shinyStroke 3.5s infinite linear; pointer-events: none;
         }
-        .hack-card:hover { border-color: var(--gold-royal); box-shadow: 0 0 30px rgba(214, 175, 55, 0.35); transform: translateY(-5px); }
+        .hack-card:hover { border-color: #ffffff; box-shadow: 0 0 30px rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
         
         .hack-card img { width: 95px; height: 95px; border-radius: 50%; margin: 0 auto 20px; border: 2px solid var(--border-royal); box-shadow: 0 8px 20px rgba(0,0,0,0.8); }
         .hack-card h3 { margin: 10px 0; font-size: 24px; font-weight: 900; color: #ffffff; letter-spacing: 1px; }
         
         .btn-group { display: flex; flex-direction: column; gap: 14px; margin-top: 25px; }
 
-        /* أزرار التحميل متدرجة من الذهبي للأسود عند الهوفر */
+        /* أزرار التحميل باللون الأسود بالكامل وحواف دائرية */
         .dl-link {
-            display: block; text-decoration: none; background: rgba(15, 15, 15, 0.6);
+            display: block; text-decoration: none; background: rgba(10, 10, 10, 0.85);
             color: #ffffff; border: 1px solid var(--border-royal);
             padding: 15px; border-radius: 50px; font-weight: 900; font-size: 15px; transition: 0.4s; letter-spacing: 1px;
             position: relative; overflow: hidden;
         }
         .dl-link:hover { 
-            background: linear-gradient(135deg, var(--gold-royal), #000000); 
-            color: #ffffff; border-color: transparent; box-shadow: 0 0 20px var(--gold-royal); 
+            background: linear-gradient(135deg, #333333, #000000); 
+            color: #ffffff; border-color: #ffffff; box-shadow: 0 0 20px rgba(255,255,255,0.3); 
         }
 
         @keyframes shinyStroke {
@@ -128,14 +130,12 @@
 </head>
 <body>
 
-<!-- فيديو البدء التلقائي المحدث (ينتهي وينقل للهاكات فوراً تلقائياً) -->
 <div id="video-loader">
-    <video id="intro-video" autoplay muted playsinline>
+    <video id="intro-video" playsinline preload="auto">
         <source src="https://github.com/Rxz60/VO/raw/refs/heads/main/ScreenRecording_%D9%A0%D9%A6-%D9%A1%D9%A8-%D9%A2%D9%A0%D9%A2%D9%A6%20%D9%A1%D9%A8-%D9%A4%D9%A2-%D9%A4%D9%A3_1.mov" type="video/mp4">
     </video>
 </div>
 
-<!-- طبقة الساعة الملكية السريعة الدوران -->
 <div class="rotating-clock-overlay"></div>
 
 <div class="main-content-wrapper">
@@ -153,19 +153,17 @@
 
     <div class="container">
         
-        <!-- iOS Section -->
         <div id="ios" class="page active">
             <div class="hack-card">
                 <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png">
                 <h3>Delta iOS</h3>
                 <div class="btn-group">
-                    <a href="itms-services://?action=download-manifest&url=https://bot.ipasign.cc/dl/20260618233411698/lFVrVZCRRAWN.plist" class="dl-link">Delta TRX</a>
-                    <a href="itms-services://?action=download-manifest&url=https://bot.ipasign.cc/dl/20260618235642217/66fhFaDT4q15.plist" class="dl-link">Delta VN TRX</a>
+                    <a href="itms-services://?action=download-manifest&url=https://bot.ipasign.cc/dl/20260619024648958/a6vmLOIS1G77.plist" class="dl-link">Delta TRX</a>
+                    <a href="itms-services://?action=download-manifest&url=https://bot.ipasign.cc/dl/20260619024345908/yp7cyneuTXeu.plist" class="dl-link">Delta VN TRX</a>
                 </div>
             </div>
         </div>
 
-        <!-- Android Section -->
         <div id="android" class="page">
             <div class="hack-card">
                 <img src="https://raw.githubusercontent.com/hatm12345cc-source/VN7/refs/heads/main/IMG_1929.png">
@@ -215,7 +213,6 @@
             </div>
         </div>
 
-        <!-- PC Section -->
         <div id="pc" class="page">
             <div class="hack-card">
                 <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2612.jpeg">
@@ -238,7 +235,7 @@
                 <div class="btn-group"><a href="https://www.mediafire.com/file/mbavimp9zr0s3gm/Trigon+PC+Fixer.exe/file" class="dl-link">Download EXE</a></div>
             </div>
             <div class="hack-card">
-                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2583.jpeg">
+                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/heads/main/IMG_2583.jpeg">
                 <h3>Pro Hacker</h3>
                 <div class="btn-group"><a href="https://gofile.io/d/6npfj8" class="dl-link">Download Now</a></div>
             </div>
@@ -258,10 +255,28 @@
         evt.currentTarget.classList.add("active");
     }
 
-    // انتهاء الفيديو التلقائي ونقل المستخدم مباشرة
+    // تشغيل تلقائي ذكي فور تفاعل المستخدم مع الصفحة لضمان عمل الصوت بالكامل بدون قيود المتصفح
     window.addEventListener('DOMContentLoaded', () => {
         const video = document.getElementById('intro-video');
         
+        const startVideoWithSound = () => {
+            video.muted = false;
+            video.play().catch(err => console.log("تأكيد التشغيل"));
+            // إزالة المستمعين بمجرد التشغيل بنجاح
+            window.removeEventListener('click', startVideoWithSound);
+            window.removeEventListener('touchstart', startVideoWithSound);
+        };
+
+        // تشغيل تلقائي فوري مبدئي صامت إذا لزم الأمر، ثم يفتح الصوت مع أول لمسة
+        video.play().then(() => {
+            window.addEventListener('click', startVideoWithSound);
+            window.addEventListener('touchstart', startVideoWithSound);
+        }).catch(() => {
+            window.addEventListener('click', startVideoWithSound);
+            window.addEventListener('touchstart', startVideoWithSound);
+        });
+
+        // عند انتهاء الفيديو بالكامل يتم نقله إلى واجهة الهاكات فوراً
         video.onended = function() {
             const loader = document.getElementById('video-loader');
             loader.style.opacity = '0';
