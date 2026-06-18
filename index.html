@@ -9,8 +9,8 @@
             --bg-dark: #000000;
             --gold-royal: #d4af37;
             --gold-glow: rgba(212, 175, 55, 0.4);
-            --card-bg: rgba(5, 5, 5, 0.85);
-            --border-royal: rgba(212, 175, 55, 0.3);
+            --card-bg: rgba(5, 5, 5, 0.88);
+            --border-royal: rgba(212, 175, 55, 0.35);
             --text-color: #ffffff;
         }
 
@@ -26,7 +26,7 @@
             color: var(--text-color); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden;
         }
 
-        /* صورة الساعة تدور باستمرار وموضوعة أمام الخلفية وخلف المحتوى تماماً */
+        /* صورة الساعة تدور بسرعة أكبر وأمام الخلفية */
         .rotating-clock-overlay {
             position: fixed; top: 50%; left: 50%; width: 85vw; height: 85vw;
             max-width: 850px; max-height: 850px;
@@ -34,7 +34,7 @@
             background-size: contain; background-position: center; background-repeat: no-repeat;
             z-index: 2; opacity: 0.75; pointer-events: none;
             transform: translate(-50%, -50%) rotate(0deg);
-            animation: clockRotate 35s linear infinite;
+            animation: clockRotate 15s linear infinite; /* تم تسريع الدوران هنا */
         }
 
         @keyframes clockRotate {
@@ -42,22 +42,21 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* غلاف المحتوى ليكون أمام الساعة الدوّارة */
+        /* غلاف المحتوى الرئيسي */
         .main-content-wrapper {
             position: relative; z-index: 10;
         }
 
-        /* فيديو البدء الإجباري - تلقائي وصامت ليتخطى حظر المتصفحات ويختفي بعد 7 ثوانٍ */
+        /* شاشة الفيديو الترحيبية التلقائية */
         #video-loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000000; z-index: 100000; display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #intro-video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 
         header { padding: 60px 20px 20px; text-align: center; }
         
-        /* شعار البرق الملكي بحواف دائرية فخمة */
         .logo-img { 
             width: 140px; height: 140px; border-radius: 50%; 
             border: 2px solid var(--gold-royal); 
@@ -67,17 +66,17 @@
         .logo-img:hover { transform: scale(1.05); box-shadow: 0 0 45px var(--gold-royal); }
         header h1 { font-size: 40px; margin: 0; font-weight: 900; letter-spacing: 4px; color: #ffffff; text-shadow: 0 0 15px var(--gold-glow); }
 
-        /* التبويبات بحواف دائرية كاملة */
         .tab-nav { display: flex; justify-content: center; gap: 15px; padding: 10px; max-width: 600px; margin: 0 auto 40px; }
         
+        /* أزرار التبويبات بتأثير متدرج من الذهبي للأسود عند التفعيل */
         .tab-btn {
-            background: rgba(0, 0, 0, 0.8); border: 1px solid var(--border-royal); color: #aaaaaa;
+            background: rgba(0, 0, 0, 0.85); border: 1px solid var(--border-royal); color: #aaaaaa;
             padding: 14px 40px; border-radius: 30px; cursor: pointer; font-weight: 900; font-size: 15px;
-            letter-spacing: 1px; transition: 0.4s ease; position: relative; overflow: hidden;
+            letter-spacing: 1px; transition: 0.4s ease;
         }
         .tab-btn.active { 
-            background: #000000; color: var(--gold-royal); 
-            border-color: var(--gold-royal); box-shadow: 0 0 25px var(--gold-glow);
+            background: linear-gradient(135deg, var(--gold-royal), #000000); 
+            color: #ffffff; border-color: var(--gold-royal); box-shadow: 0 0 25px var(--gold-glow);
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; }
@@ -86,39 +85,39 @@
 
         @keyframes royalFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* الكروت الملكية بحواف دائرية والستروك اللامع المتحرك باستمرار */
+        /* الكروت الملكية بتأثير تدرج حواف ولمعان ذهبي لأسود */
         .hack-card {
             background: var(--card-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-royal); border-radius: 24px; padding: 30px;
             text-align: center; transition: 0.4s ease;
             display: flex; flex-direction: column; justify-content: space-between;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.9);
-            position: relative; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.9); position: relative; overflow: hidden;
         }
         
-        /* تأثير خط اللمعان (Stroke Shiny) الذي يمر بشكل دوري */
+        /* ستروك اللمعان المتدرج من الذهبي الماشي إلى الأسود */
         .hack-card::before, .dl-link::before {
-            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(214, 175, 55, 0.3), transparent);
-            transform: skewX(-25deg); animation: shinyStroke 4s infinite linear; pointer-events: none;
+            content: ''; position: absolute; top: 0; left: -150%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, var(--gold-royal), #000000, transparent);
+            transform: skewX(-25deg); animation: shinyStroke 3.5s infinite linear; pointer-events: none;
         }
-        .hack-card:hover { border-color: var(--gold-royal); box-shadow: 0 0 30px rgba(214, 175, 55, 0.3); transform: translateY(-5px); }
+        .hack-card:hover { border-color: var(--gold-royal); box-shadow: 0 0 30px rgba(214, 175, 55, 0.35); transform: translateY(-5px); }
         
-        /* أيقونات دائرية فخمة */
         .hack-card img { width: 95px; height: 95px; border-radius: 50%; margin: 0 auto 20px; border: 2px solid var(--border-royal); box-shadow: 0 8px 20px rgba(0,0,0,0.8); }
         .hack-card h3 { margin: 10px 0; font-size: 24px; font-weight: 900; color: #ffffff; letter-spacing: 1px; }
         
         .btn-group { display: flex; flex-direction: column; gap: 14px; margin-top: 25px; }
 
-        /* أزرار بحواف دائرية وتأثير اللمعان الذاتي */
+        /* أزرار التحميل متدرجة من الذهبي للأسود عند الهوفر */
         .dl-link {
-            display: block; text-decoration: none; background: rgba(255, 255, 255, 0.02);
+            display: block; text-decoration: none; background: rgba(15, 15, 15, 0.6);
             color: #ffffff; border: 1px solid var(--border-royal);
-            padding: 15px; border-radius: 50px; font-weight: 900; font-size: 15px; transition: 0.3s; letter-spacing: 1px;
+            padding: 15px; border-radius: 50px; font-weight: 900; font-size: 15px; transition: 0.4s; letter-spacing: 1px;
             position: relative; overflow: hidden;
         }
-        .dl-link::before { animation-duration: 2.5s; }
-        .dl-link:hover { background: var(--gold-royal); color: #000000; border-color: transparent; box-shadow: 0 0 20px var(--gold-royal); }
+        .dl-link:hover { 
+            background: linear-gradient(135deg, var(--gold-royal), #000000); 
+            color: #ffffff; border-color: transparent; box-shadow: 0 0 20px var(--gold-royal); 
+        }
 
         @keyframes shinyStroke {
             0% { left: -150%; }
@@ -129,21 +128,19 @@
 </head>
 <body>
 
-<!-- فيديو البدء التلقائي الملكي الفاخر (يمكث 7 ثوانٍ تماماً ثم يختفي) -->
+<!-- فيديو البدء التلقائي المحدث (ينتهي وينقل للهاكات فوراً تلقائياً) -->
 <div id="video-loader">
     <video id="intro-video" autoplay muted playsinline>
-        <source src="https://github.com/Rxz60/Delta/raw/refs/heads/main/ScreenRecording_%D9%A0%D9%A6-%D9%A1%D9%A8-%D9%A2%D9%A0%D9%A2%D9%A6%20%D9%A1%D9%A8-%D9%A4%D9%A2-%D9%A4%D9%A3_1.mov" type="video/mp4">
+        <source src="https://github.com/Rxz60/VO/raw/refs/heads/main/ScreenRecording_%D9%A0%D9%A6-%D9%A1%D9%A8-%D9%A2%D9%A0%D9%A2%D9%A6%20%D9%A1%D9%A8-%D9%A4%D9%A2-%D9%A4%D9%A3_1.mov" type="video/mp4">
     </video>
 </div>
 
-<!-- طبقة الساعة الدوارة أمام الخلفية مباشرة -->
+<!-- طبقة الساعة الملكية السريعة الدوران -->
 <div class="rotating-clock-overlay"></div>
 
-<!-- المحتوى الرئيسي للموقع -->
 <div class="main-content-wrapper">
 
     <header>
-        <!-- صورة البرق الفخمة بالمنتصف -->
         <img src="https://github.com/Rxz60/Delta/raw/refs/heads/main/A1351BE6-9544-4996-94B8-433B565410A6.png" class="logo-img">
         <h1>TRX l HUB</h1>
     </header>
@@ -261,14 +258,16 @@
         evt.currentTarget.classList.add("active");
     }
 
-    // عداد الـ 7 ثواني الإجباري للفيديو دون أي تدخل أو إمكانية تخطي
+    // انتهاء الفيديو التلقائي ونقل المستخدم مباشرة
     window.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
+        const video = document.getElementById('intro-video');
+        
+        video.onended = function() {
             const loader = document.getElementById('video-loader');
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
-            setTimeout(() => { loader.style.display = 'none'; }, 800);
-        }, 7000);
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+        };
     });
 </script>
 </body>
