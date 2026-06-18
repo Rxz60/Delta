@@ -34,7 +34,7 @@
             background-size: contain; background-position: center; background-repeat: no-repeat;
             z-index: 2; opacity: 0.8; pointer-events: none;
             transform: translate(-50%, -50%) rotate(0deg);
-            animation: clockRotate 8s linear infinite; /* تم تسريع الدوران ليكون سريعاً وحركياً */
+            animation: clockRotate 8s linear infinite;
         }
 
         @keyframes clockRotate {
@@ -235,7 +235,7 @@
                 <div class="btn-group"><a href="https://www.mediafire.com/file/mbavimp9zr0s3gm/Trigon+PC+Fixer.exe/file" class="dl-link">Download EXE</a></div>
             </div>
             <div class="hack-card">
-                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/heads/main/IMG_2583.jpeg">
+                <img src="https://raw.githubusercontent.com/Rxz60/Rxz/refs/heads/main/IMG_2583.jpeg">
                 <h3>Pro Hacker</h3>
                 <div class="btn-group"><a href="https://gofile.io/d/6npfj8" class="dl-link">Download Now</a></div>
             </div>
@@ -262,12 +262,10 @@
         const startVideoWithSound = () => {
             video.muted = false;
             video.play().catch(err => console.log("تأكيد التشغيل"));
-            // إزالة المستمعين بمجرد التشغيل بنجاح
             window.removeEventListener('click', startVideoWithSound);
             window.removeEventListener('touchstart', startVideoWithSound);
         };
-
-        // تشغيل تلقائي فوري مبدئي صامت إذا لزم الأمر، ثم يفتح الصوت مع أول لمسة
+//سبب الدوال كثيره عشان واجهه ماتخرب
         video.play().then(() => {
             window.addEventListener('click', startVideoWithSound);
             window.addEventListener('touchstart', startVideoWithSound);
@@ -276,7 +274,7 @@
             window.addEventListener('touchstart', startVideoWithSound);
         });
 
-        // عند انتهاء الفيديو بالكامل يتم نقله إلى واجهة الهاكات فوراً
+        // كود الاختفاء التلقائي الفوري بمجرد انتهاء الفيديو بالكامل
         video.onended = function() {
             const loader = document.getElementById('video-loader');
             loader.style.opacity = '0';
